@@ -1,0 +1,52 @@
+﻿@page
+@model CreateUserModel
+@{
+	ViewData["Title"] = "Create a User";
+}
+
+<h1>Create a User!</h1>
+
+@{
+	if (ViewData["SuccessMessage"] != null)
+	{
+		<p class="text-success">@ViewData["SuccessMessage"]</p>
+	}
+}
+<form asp-page="CreateUser">
+	<input type="text" asp-for="NewUsers.Name" id="Name" placeholder="Enter Name" />
+	<span asp-validation-for="NewUsers.Name" class="text-danger"></span>
+	<br /> <br />
+	<input type="text" asp-for="NewUsers.Email" id="email" placeholder="Enter Email" />
+	<span asp-validation-for="NewUsers.Email" class="text-danger"></span>
+	<br /> <br />
+	<input type="text" asp-for="NewUsers.Password" id="password" placeholder="Enter Password" />
+	<span asp-validation-for="NewUsers.Password" class="text-danger"></span>
+	<br /><br />
+	<input type="text" asp-for="NewUsers.postion" id="Position" placeholder="Enter Position Title" />
+	<span asp-validation-for="NewUsers.postion" class="text-danger"></span>
+	<br /><br />
+	<input type="text" asp-for="NewFaculty.Department" id="department" placeholder="Enter Department" />
+	<span asp-validation-for="NewFaculty.Department" class="text-danger"></span>
+	<br /><br />
+	<select id="facultyType" class="form-select" asp-for="NewUsers.Role">
+		<option value="Faculty">Faculty</option>
+		<option value="Grant Org Administrator">Grant Org Administrator</option>
+		<option value="Organizational Admin">Organizational Admin</option>
+		<option value="Business Partner Representative">Business Partner Representative</option>
+	</select>
+	<span asp-validation-for="NewUsers.Role" class="text-danger"></span>
+	<br /><br />
+	<button class="btn btn-primary">Submit</button>
+	<button type="button" class="btn btn-secondary" onclick="populateForm()">Populate</button>
+	<button class="btn btn-danger">Clear</button>
+</form>
+<script>
+	function populateForm() {
+		document.getElementById("Name").value = "John";
+		document.getElementById("email").value = "john.doe@example.com";
+		document.getElementById("password").value = "password123";
+		document.getElementById("Position").value = "Professor";
+		document.getElementById("facultyType").value = "Faculty";
+		document.getElementById("department").value = "Info Security"
+	}
+</script>
